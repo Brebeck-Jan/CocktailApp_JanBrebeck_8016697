@@ -116,12 +116,33 @@ export function deleteReceipt(receiptID) {
     return response;
 }
 
-export function addIngridients(ingridients) {
+export function getAllIngridients() {
     let response
     $.ajax({
         url: Database_url + 'ingridients.json',
         dataType: "json",
         type: 'GET',
+        async: false,
+        success: function (serverResponse) {
+            console.log("Response: ", serverResponse);
+            response = serverResponse;
+        },
+        error: function (serverResponse) {
+            console.log("Response: ", serverResponse);
+            response = serverResponse;
+            debugger;
+        }
+    });
+    return response;
+}
+
+export function addIngridient(ingridient) {
+    let response
+    $.ajax({
+        url: Database_url + 'ingridients.json',
+        data: JSON.stringify(ingridient),
+        dataType: "json",
+        type: 'POST',
         async: false,
         success: function (serverResponse) {
             console.log("Response: ", serverResponse);
