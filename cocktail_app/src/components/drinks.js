@@ -1,7 +1,7 @@
 import React from "react"
 import "./drinks.css"
 
-export function drinks() {
+export default function drinks() {
     return (
         <div id="icon">
             <div className="drink" id="drink1">

@@ -1,23 +1,29 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Receipts from "./containers/receipts"
+import Recipes from "./containers/recipes"
 import { addReceipt, getOneReceipt, deleteReceipt, getAllReceipts } from './databasehandler';
-import { navBar } from "./components/navBar"
+import NavBar from "./components/navBar"
 import Ingridients from "./components/Ingridients"
 import { drinks } from './components/drinks';
 import Startingpage from "./containers/StartingPage"
-import {cocktail} from "./components/cocktail"
+import Cocktail  from "./components/cocktail"
+import Background from './asset/Background.jpg';
+import "./App.css"
 
 function App() {
+  let allItems = getAllReceipts()
+  console.log(allItems)
+
+
   return (
-    <div>
+    <div className="start">
       <Router>
-        {navBar()}
+        <NavBar />
         <Switch>
-          <Route path="/" component={Startingpage} exact />
-          <Route path="/receipts" component={Receipts} exact />
-          <Route path="/ingridients" component={Ingridients} exact />
-          <Route path="/cocktail" component={cocktail} exact />
+          <Route path="/" render={() => <Startingpage data={allItems}/>} exact/>
+          <Route path="/receipts" render={() => <Recipes data={allItems}/>} exact />
+          <Route path="/ingridients" render={() => <Ingridients data={allItems}/>}  exact />
+          <Route path="/cocktail" render={() => <Cocktail data={allItems}/>} exact />
         </Switch>
       </Router>
     </div>

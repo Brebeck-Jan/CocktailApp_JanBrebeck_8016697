@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function cocktail() {
+export default function cocktail() {
   return (
     <div>
         cocktail

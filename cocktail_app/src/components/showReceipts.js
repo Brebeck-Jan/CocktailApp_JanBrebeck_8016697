@@ -1,38 +1,29 @@
 import React from 'react';
+import  ListItem from "@material-ui/core/ListItem"
 
-export function showReceipts(allReceipts) {
+export default function showReceipts(allReceipts) {
     allReceipts = Object.values(allReceipts)
     console.log("props of showCocktails: ", allReceipts)
+    
     let content = []
 
     allReceipts.forEach(receipt => {
         console.log("Receipt: ", receipt)
         let innerContent = []
-        // innerContent.push(
-        //     <p>
-        //         {receipt.name}
-        //     </p>
-        // )
-
-        receipt.ingridients.forEach(ingridient => {
-            console.log(ingridient)
-            innerContent.push(
-                <>
-                    <td>{ingridient.ingridient}</td>
-                    <td>{ingridient.amount}</td>
-                </>
-            )
-        })
+        // receipt.ingridients.forEach(ingridient => {
+        //     console.log(ingridient)
+        //     innerContent.push( 
+        //         <>
+        //             <td>{ingridient.ingridient}</td>
+        //             <td>{ingridient.amount}</td>
+        //         </>
+        //     )
+        // })
         content.push(
             <>
-                <tr>
-                    <p>
-                        {receipt.name}
-                    </p>
-                </tr>
-                <tr>
-                    {innerContent}
-                </tr>
+            {/* <ListItem>
+                ingridient.name
+            </ListItem> */}
             </>
         )
     });
@@ -40,9 +31,9 @@ export function showReceipts(allReceipts) {
     console.log("content", content)
     return (
         <div>
-            <table>
+            {/* <List>
                 {content}
-            </table>
+            </List> */}
         </div>
     );
 } 

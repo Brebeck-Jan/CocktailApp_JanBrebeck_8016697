@@ -1,9 +1,5 @@
   #icon {
-    position: fixed;
-    left: 50%;
-    top: 90%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);  
+    
   }
   
   .drink {
