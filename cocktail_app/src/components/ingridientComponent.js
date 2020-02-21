@@ -1,27 +1,43 @@
-import React from "react"
+import React, {useState} from "react"
 
-function ingridientComponent(probs) {
+function IngridientComponent(probs) {
+    const [selected, setState] = useState(["Test"]);
     console.log(probs)
-    let content = []
-    probs.data.forEach(ingridient => {
-        content.push(
-            <tr>
-                <td>
-                    {ingridient}
-                </td>
-                <td>
-                    <input type="checkbox" />
-                </td>
-            </tr>
-        )
-    });
+    setState(["TEst","Test2"])
+
+    let createContent = () => {
+        let content = []
+        selected.forEach(ingridient => {
+            content.push(
+                <tr>
+                    <td>
+                        {ingridient}
+                    </td>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                </tr>
+            )
+        });
+        return content
+    }
+
+    let addIngridient = () => {
+
+    }
+
+    addIngridient()
     return (
         <tbody>
-            {content}
-
+            {createContent}
+            <td>
+                <button onClick={addIngridient}>
+                    Zutat hinzufügen
+                        </button>
+            </td>
         </tbody>
 
     );
 }
 
-export default ingridientComponent;
+export default IngridientComponent;
