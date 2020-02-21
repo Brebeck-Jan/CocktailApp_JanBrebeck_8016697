@@ -11,7 +11,8 @@ import Background from './asset/Background.jpg';
 import "./App.css"
 
 function App() {
-  let allItems = getAllReceipts()
+  let allItems = []
+  allItems = getAllReceipts()
   console.log(allItems)
 
 

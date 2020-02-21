@@ -11,7 +11,8 @@ class Sidebar extends React.Component {
     }
 
     componentWillMount() {
-        let allReceipts = getAllReceipts()
+        // let allReceipts = getAllReceipts()
+        let allReceipts = []
         this.setState({ allReceipts: allReceipts })
     }
 
