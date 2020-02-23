@@ -13,6 +13,8 @@ class Receipts extends React.Component {
         console.log("Receipts this.state.allReceipts:", this.state.allReceipts)
     }
 
+    // TODO: redirect, if no ingredients are given
+
     renderItems(allReceipts) {
         let content = []
         allReceipts.forEach(recipe => {

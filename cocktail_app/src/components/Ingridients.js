@@ -1,24 +1,43 @@
 import React from "react"
 import IngridientComponent from "./ingridientComponent"
 import { getAllIngridients } from "../databasehandler"
+import {Link} from "react-router-dom"
 
 function ingridient(probs) {
-    let allIngridients = ["Apfel","Rum"]
+    let allIngredients = getAllIngridients()
+    let selectItems = () => {
+
+    }
+
+    console.log("All: ", allIngredients)
     return (
         <div>
             <table>
-                <IngridientComponent data={allIngridients} />
+                <IngridientComponent allIngredients={allIngredients} selected={selectItems} />
                 <tr>
                     <td>
                         Wollen Sie einkaufen gehen?
                     </td>
                     <td>
-                        <input type="Checkbox"/>
+                        <button>Ja</button>
+                    </td>
+                    <td>
+                        <button>Nein</button>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <Link to={"/cocktail"} probs={"Test"}>
+                            <button className="startButton">
+                                Weiter zu den Cocktails
+                </button>
+                        </Link>
                     </td>
                 </tr>
-        </table>
+            </table>
         </div>
-            );
-        }
-        
-        export default ingridient;
+    );
+}
+
+export default ingridient;

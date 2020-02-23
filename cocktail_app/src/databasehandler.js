@@ -119,7 +119,7 @@ export function deleteReceipt(receiptID) {
 export function getAllIngridients() {
     let response
     $.ajax({
-        url: Database_url + 'ingridients.json',
+        url: Database_url + 'ingredients.json',
         dataType: "json",
         type: 'GET',
         async: false,

@@ -19,10 +19,12 @@ const useStyles = makeStyles(theme => ({
 
 
 function IngridientComponent(probs) {
-    const [selected, setState] = useState(["Test"]);
+    console.log("IngridientsComponent probs: ", probs)
+    const [selected, setState] = useState(["Bitte wählen Sie die"]);
     const [selected2, setState2] = useState(["Test"]);
     const classes = useStyles();
     let selectedIngridient = ""
+
     let handleChange = (e) => {
         console.log(e.target.value)
         selectedIngridient = "Ten"
@@ -32,33 +34,35 @@ function IngridientComponent(probs) {
     console.log("Test")
     let createContent = () => {
         let content = []
+        let options = []
         console.log("Test: ", selected)
         selected.forEach(ingridient => {
             content.push(
-                <tr>
-                    <td>
-                        {ingridient}
-                    </td>
-                    <td>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={selected2}
-                                onChange={handleChange
-                                }
-                            >
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </td>
-                    <td>
-                        <input type="checkbox" />
-                    </td>
-                </tr>
+                <>
+                    <tr>
+                        <td>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="demo-simple-select-label"></InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={selected2}
+                                    onChange={handleChange
+                                    }>
+                                    {
+                                        probs.allIngredients.map(element => {
+                                            options.push(<MenuItem value={element}>{element}</MenuItem>)
+                                        })
+                                    }
+                                    {options}
+                                </Select>
+                            </FormControl>
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                    </tr>
+                </>
             )
         });
         return content
