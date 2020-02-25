@@ -22,14 +22,11 @@ class Sidebar extends React.Component {
                 <a className="menu-item" href='/'>
                     Home
       </a>
+                <a className="menu-item" href="/ingredients">
+                    Zutaten
+      </a>
                 <a className="menu-item" href='/receipts'>
-                    Receipts
-      </a>
-                <a className="menu-item" href="/ingridients">
-                    Ingridients at Home
-      </a>
-                <a className="menu-item" href="/cocktail">
-                    Let's make a cocktail!
+                    Rezept
       </a>
             </Menu>
         );

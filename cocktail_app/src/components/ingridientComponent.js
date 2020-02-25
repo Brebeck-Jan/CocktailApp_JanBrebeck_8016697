@@ -20,23 +20,21 @@ const useStyles = makeStyles(theme => ({
 
 function IngridientComponent(probs) {
     console.log("IngridientsComponent probs: ", probs)
-    const [selected, setState] = useState(["Bitte wählen Sie die"]);
-    const [selected2, setState2] = useState(["Test"]);
+    const [state, setState] = useState({ selected: ["Bitte Auswählen", "Bitte Auswählen"] });
     const classes = useStyles();
-    let selectedIngridient = ""
 
-    let handleChange = (e) => {
-        console.log(e.target.value)
-        selectedIngridient = "Ten"
-        setState2(e.target.value)
+    let handleChange = (item, e) => {
+        let index = state.selected.indexOf(item)
+        state.selected[index] = e
+        setState({ selected: state.selected })
+        probs.setSelected(state.selected)
     }
 
-    console.log("Test")
     let createContent = () => {
         let content = []
         let options = []
-        console.log("Test: ", selected)
-        selected.forEach(ingridient => {
+        state.selected.forEach(item => {
+            console.log("Zutat", item)
             content.push(
                 <>
                     <tr>
@@ -46,9 +44,13 @@ function IngridientComponent(probs) {
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value={selected2}
-                                    onChange={handleChange
+                                    value={item}
+                                    onChange={(e) => {
+                                        handleChange(item, e.target.value)
+                                        item = e.target.value
+                                    }
                                     }>
+                                    <MenuItem value="Bitte Auswählen">Bitte Auswählen</MenuItem>
                                     {
                                         probs.allIngredients.map(element => {
                                             options.push(<MenuItem value={element}>{element}</MenuItem>)
@@ -58,9 +60,6 @@ function IngridientComponent(probs) {
                                 </Select>
                             </FormControl>
                         </td>
-                        <td>
-                            <input type="checkbox" />
-                        </td>
                     </tr>
                 </>
             )
@@ -69,8 +68,8 @@ function IngridientComponent(probs) {
     }
 
     let addIngridient = () => {
-        selected.push("Bitte auswählen!")
-        setState([...selected])
+        state.selected.push("Bitte auswählen!")
+        setState([...state.selected])
     }
 
     return (

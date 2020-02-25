@@ -2,8 +2,9 @@ import React from 'react';
 
 export default function cocktail(probs) {
   console.log("Cocktail probs: ", probs)
-  probs.allReciepts
-  probs.allIngredients
+  console.log("location: ",location)
+  // probs.allReciepts
+  // probs.allIngredients
 
   let matchingCocktails = (ingredients, allReciepts) => {
     let matches = allReciepts.copy()

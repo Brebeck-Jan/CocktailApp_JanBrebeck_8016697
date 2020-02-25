@@ -22,7 +22,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route path="/" render={() => <Startingpage data={allItems}/>} exact/>
-          <Route path="/ingridients" render={() => <Ingridients data={allItems}/>}  exact />
+          <Route path="/ingredients" render={() => <Ingridients data={allItems}/>}  exact />
           <Route path="/receipts" render={() => <Recipes data={allItems}/>} exact />
           <Route path="/cocktail" render={() => <Cocktail data={allItems}/>} exact />
         </Switch>

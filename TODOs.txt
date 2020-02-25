@@ -1,0 +1,3 @@
+- write down req.
+- classdiagram
+- classfunktions

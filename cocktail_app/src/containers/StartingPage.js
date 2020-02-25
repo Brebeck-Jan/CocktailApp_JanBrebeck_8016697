@@ -12,10 +12,9 @@ class StartingPage extends React.Component {
     }
 
     componentWillMount() {
-        let allReceipts = getAllReceipts()
+        // let allReceipts = getAllReceipts()
         let allIngridients = getAllIngridients()
-        this.setState({ allReceipts: allReceipts, allIngridients: allIngridients })
-        console.log("Receipts", allReceipts)
+        // this.setState({ allReceipts: allReceipts, allIngridients: allIngridients })
         console.log("Ingridients", allIngridients)
     }
 
@@ -24,17 +23,17 @@ class StartingPage extends React.Component {
 
     render() {
         return (
-            <>
+            <div className="Startcontent">
                     <p className="welcome">
                         Welcome to your Cocktailapp!
                 </p>
-                <img className="background" src={Background} style={{ width: "500px", height: "500px", alignItems:"center" }} />
+                <img className="background" src={Background} />
                 <Link to={"/ingridients"}>
                 <button className="startButton">
                     Start
                 </button>
                 </Link>
-            </>
+            </div>
         )
     }
 };
