@@ -1,26 +1,34 @@
 import React from 'react';
 
-export default function cocktail(probs) {
-  console.log("Cocktail probs: ", probs)
-  console.log("location: ",location)
+class Cocktail extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("Cocktail probs: ", props)
+
+  }
   // probs.allReciepts
   // probs.allIngredients
 
-  let matchingCocktails = (ingredients, allReciepts) => {
-    let matches = allReciepts.copy()
+  // matchingCocktails = (ingredients, allReciepts) => {
+  //   console.log("oass")
+  // }
 
-    allReciepts.forEach(reciept => {
-      reciept.ingredients.forEach(ingredient => {
-        if (ingredient in ingredients) {
-          delete matches.reciept.id
-        }
-      })
-    })
+  // this.state.allReciepts.forEach(reciept => {
+  //   reciept.ingredients.forEach(ingredient => {
+  //     if (ingredient in ingredients) {
+  //       delete matches.reciept.id
+  //     }
+  //   })
+  // })
+
+  render() {
+    console.log("location: ", this.props.location)
+    return (
+      <div>
+        Test
+      </div>
+    );
   }
-
-  return (
-    <div>
-      Test
-    </div>
-  );
 }
+
+export default Cocktail

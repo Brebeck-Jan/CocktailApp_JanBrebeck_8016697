@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 
 function IngridientComponent(probs) {
     console.log("IngridientsComponent probs: ", probs)
-    const [state, setState] = useState({ selected: ["Bitte Auswählen", "Bitte Auswählen"] });
+    const [state, setState] = useState({ selected: ["Bitte Auswählen"] });
     const classes = useStyles();
 
     let handleChange = (item, e) => {
@@ -31,6 +31,7 @@ function IngridientComponent(probs) {
     }
 
     let createContent = () => {
+        console.log("CreateContent state: ",state)
         let content = []
         let options = []
         state.selected.forEach(item => {
@@ -68,8 +69,8 @@ function IngridientComponent(probs) {
     }
 
     let addIngridient = () => {
-        state.selected.push("Bitte auswählen!")
-        setState([...state.selected])
+        state.selected.push("Bitte Auswählen");
+        setState({selected:state.selected});
     }
 
     return (

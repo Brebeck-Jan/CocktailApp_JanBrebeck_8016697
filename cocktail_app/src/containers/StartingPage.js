@@ -28,7 +28,7 @@ class StartingPage extends React.Component {
                         Welcome to your Cocktailapp!
                 </p>
                 <img className="background" src={Background} />
-                <Link to={"/ingridients"}>
+                <Link to={"/ingredients"}>
                 <button className="startButton">
                     Start
                 </button>

@@ -9,6 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import "./Ingredients.css"
 
 const AntSwitch = withStyles(theme => ({
     root: {
@@ -56,7 +57,9 @@ function Ingridient(probs) {
         setState({ ...state, [name]: event.target.checked });
     };
 
-    let allIngredients = getAllIngridients()
+    let allIngredients = ["Rum"]
+    allIngredients = getAllIngridients()
+
     let selectItems = (items) => {
         setState({
             selectedItems: items
@@ -69,7 +72,7 @@ function Ingridient(probs) {
 
     console.log("All: ", allIngredients)
     return (
-        <div>
+        <div className="ingredients">
             <table>
                 <IngridientComponent allIngredients={allIngredients} setSelected={setSelected} />
                 <tr>
@@ -94,8 +97,11 @@ function Ingridient(probs) {
                 </tr>
                 <tr>
                     <td>
-                        <Link to={{pathname:"/cocktail", probs:state.test}} >
-                            <button
+                        <Link to={{pathname:"/cocktail", selected:state.test}} >
+                            <button type="button"
+                            onClick={()=>{
+                                console.log("Test; ",state.test)
+                            }}
                                 className="startButton"
                             >
                                 Weiter zu den Cocktails
