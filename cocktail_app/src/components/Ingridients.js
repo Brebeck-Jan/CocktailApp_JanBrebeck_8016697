@@ -11,6 +11,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import "./Ingredients.css"
 
+//TODO min margin left
+
 const AntSwitch = withStyles(theme => ({
     root: {
         width: 28,
@@ -47,14 +49,15 @@ const AntSwitch = withStyles(theme => ({
 
 
 function Ingridient(probs) {
-
     const [state, setState] = React.useState({
-        shopping: true,
+        shopping: false,
 
     });
 
     const handleChange = name => event => {
         setState({ ...state, [name]: event.target.checked });
+        console.log("Event: ", event.target.checked)
+        console.log("HandleChange State: ", state)
     };
 
     let allIngredients = ["Rum"]
@@ -97,11 +100,11 @@ function Ingridient(probs) {
                 </tr>
                 <tr>
                     <td>
-                        <Link to={{pathname:"/cocktail", selected:state.test}} >
+                        <Link to={{ pathname: "/cocktail", selected: state.test, shopping: state.shopping }} >
                             <button type="button"
-                            onClick={()=>{
-                                console.log("Test; ",state.test)
-                            }}
+                                onClick={() => {
+                                    console.log("Test; ", state.test)
+                                }}
                                 className="startButton"
                             >
                                 Weiter zu den Cocktails

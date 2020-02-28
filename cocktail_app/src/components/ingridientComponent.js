@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 
 function IngridientComponent(probs) {
     console.log("IngridientsComponent probs: ", probs)
-    const [state, setState] = useState({ selected: ["Bitte Auswählen"] });
+    const [state, setState] = useState({ selected: ["Bitte Auswählen", "Bitte Auswählen"] });
     const classes = useStyles();
 
     let handleChange = (item, e) => {
@@ -31,11 +31,13 @@ function IngridientComponent(probs) {
     }
 
     let createContent = () => {
-        console.log("CreateContent state: ",state)
+        console.log("CreateContent state: ", state)
         let content = []
-        let options = []
+        let selectebalItems = []
+        probs.allIngredients.map(element => {
+            selectebalItems.push(<MenuItem value={element}>{element}</MenuItem>)
+        })
         state.selected.forEach(item => {
-            console.log("Zutat", item)
             content.push(
                 <>
                     <tr>
@@ -53,11 +55,8 @@ function IngridientComponent(probs) {
                                     }>
                                     <MenuItem value="Bitte Auswählen">Bitte Auswählen</MenuItem>
                                     {
-                                        probs.allIngredients.map(element => {
-                                            options.push(<MenuItem value={element}>{element}</MenuItem>)
-                                        })
+                                        selectebalItems
                                     }
-                                    {options}
                                 </Select>
                             </FormControl>
                         </td>
@@ -70,7 +69,7 @@ function IngridientComponent(probs) {
 
     let addIngridient = () => {
         state.selected.push("Bitte Auswählen");
-        setState({selected:state.selected});
+        setState({ selected: state.selected });
     }
 
     return (

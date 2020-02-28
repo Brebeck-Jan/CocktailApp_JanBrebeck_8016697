@@ -6,7 +6,7 @@ import NavBar from "./components/navBar"
 import Ingridients from "./components/Ingridients"
 import { drinks } from './components/drinks';
 import Startingpage from "./containers/StartingPage"
-import Cocktail from "./components/cocktail"
+import Cocktail from "./components/cocktailPage"
 import Background from './asset/Background.jpg';
 import "./App.css"
 
@@ -17,6 +17,8 @@ function App() {
   let allItems = []
   allItems = getAllReceipts()
   console.log(allItems)
+
+  // TODO max-height in %
 
 
   return (
