@@ -1,6 +1,7 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import "./Sidebar.css"
+import { idGenerator } from "../idGenerator"
 
 class Sidebar extends React.Component {
     constructor(props) {
@@ -8,25 +9,22 @@ class Sidebar extends React.Component {
         this.state = { isOpen: false }
     }
 
-    componentWillMount() {
-        // let allReceipts = getAllReceipts()
-        let allReceipts = []
-        this.setState({ allReceipts: allReceipts })
-    }
-
     render() {
         return (
-            <Menu isOpen={this.state.isOpen}>
-                <a className="menu-item" href='/'>
-                    Home
+                <Menu
+
+                    key={idGenerator("Navbar-Menu")}
+                    isOpen={this.state.isOpen}>
+                    <a className="menu-item" href='/'>
+                        Home
       </a>
-                <a className="menu-item" href="/ingredients">
-                    Zutaten
+                    <a className="menu-item" href="/ingredients">
+                        Zutaten
       </a>
-                <a className="menu-item" href='/receipts'>
-                    Rezept
+                    <a className="menu-item" href='/receipts'>
+                        Rezept
       </a>
-            </Menu>
+                </Menu>
         );
     }
 };

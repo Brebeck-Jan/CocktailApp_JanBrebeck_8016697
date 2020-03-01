@@ -1,29 +1,28 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Recipes from "./containers/recipes"
-import { getAllReceipts } from './databasehandler';
-import NavBar from "./components/navBar"
+import { getAllRecipes } from './databasehandler';
 import Ingridients from "./components/Ingridients"
 import Startingpage from "./containers/StartingPage"
-import Cocktail from "./components/cocktailPage"
+import CocktailPage from "./components/cocktailPage"
 import "./App.css"
+import Sidebar from './containers/SideBar';
 
 function App() {
   let allItems = []
-  allItems = getAllReceipts()
-  console.log(allItems)
+  allItems = getAllRecipes()
 
   return (
     <div className="start">
-      <Router>
-        <NavBar />
+      <BrowserRouter>
+        <Sidebar />
         <Switch>
           <Route path="/" render={() => <Startingpage data={allItems} />} exact />
           <Route path="/ingredients" render={() => <Ingridients data={allItems} />} exact />
           <Route path="/receipts" render={() => <Recipes data={allItems} />} exact />
-          <Route path="/cocktail" component={Cocktail} exact />
+          <Route path="/cocktail" component={CocktailPage} exact />
         </Switch>
-      </Router>
+      </BrowserRouter>  
     </div>
   );
 }

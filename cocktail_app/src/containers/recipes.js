@@ -3,12 +3,12 @@ import "./recipes.css";
 import List from "@material-ui/core/List"
 import { ListItem } from '@material-ui/core';
 import Recipe from "../components/recipe"
+import {idGenerator} from "../idGenerator"
 
 class Receipts extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { allReceipts: Object.values(this.props.data), showOneRecipe: false }
-        console.log("Receipts this.state.allReceipts:", this.state.allReceipts)
+        this.state = { allRecipes: Object.values(this.props.data), showOneRecipe: false }
     }
 
     renderItems(allReceipts) {
@@ -16,7 +16,9 @@ class Receipts extends React.Component {
         allReceipts.forEach(recipe => {
             console.log("recipe: ", recipe)
             content.push(
-                <ListItem onClick={() => {
+                <ListItem 
+                key={idGenerator(recipe.name)}
+                onClick={() => {
                     this.setState({ selected: recipe, showOneRecipe: true })
                 }}>
                     {recipe.name}
@@ -39,8 +41,8 @@ class Receipts extends React.Component {
                         :
                         <>
                             <h1>Alle Cocktailrezepte</h1>
-                            <List>
-                                {this.renderItems(this.state.allReceipts)}
+                            <List key={idGenerator("Alle")}>
+                                {this.renderItems(this.state.allRecipes)}
                             </List>
                         </>
                 }

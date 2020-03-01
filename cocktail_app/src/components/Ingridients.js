@@ -7,6 +7,8 @@ import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import "./Ingredients.css"
+import Button from '@material-ui/core/Button';
+import {idGenerator} from "../idGenerator"
 
 const AntSwitch = withStyles(theme => ({
     root: {
@@ -57,45 +59,39 @@ function Ingridient() {
     let setSelected = (selectedItems) => {
         setState({ test: selectedItems })
     }
-
     return (
         <div className="ingredients">
             <table>
-                <IngridientComponent allIngredients={allIngredients} setSelected={setSelected} />
-                <tr>
-                    <td>
-                        Wollen Sie einkaufen gehen?
+                <tbody>
+                    <IngridientComponent allIngredients={allIngredients} setSelected={setSelected} />
+                    <tr key={idGenerator("Einkaufen?")}>
+                        <td>
+                            Wollen Sie einkaufen gehen?
                     </td>
-                    <td>
-                        <Typography component="div">
-                            <Grid component="label" container alignItems="center" spacing={1}>
-                                <Grid item>Nein</Grid>
-                                <Grid item>
-                                    <AntSwitch
-                                        checked={state.shopping}
-                                        onChange={handleChange('shopping')}
-                                        value="checkedC"
-                                    />
+                        <td>
+                            <Typography component="div">
+                                <Grid component="label" container alignItems="center" spacing={1}>
+                                    <Grid item>Nein</Grid>
+                                    <Grid item>
+                                        <AntSwitch
+                                            checked={state.shopping}
+                                            onChange={handleChange('shopping')}
+                                            value="checkedC"
+                                        />
+                                    </Grid>
+                                    <Grid item>Ja!</Grid>
                                 </Grid>
-                                <Grid item>Ja!</Grid>
-                            </Grid>
-                        </Typography>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <Link to={{ pathname: "/cocktail", selected: state.test, shopping: state.shopping }} >
-                            <button type="button"
-                                onClick={() => {
-                                    console.log("Test; ", state)
-                                }}
-                                className="startButton"
-                            >
-                                Weiter zu den Cocktails
-                </button>
-                        </Link>
-                    </td>
-                </tr>
+                            </Typography>
+                        </td>
+                    </tr>
+                    <tr key={idGenerator("Weiter")}>
+                        <td>
+                            <Link to={{ pathname: "/cocktail", selected: state.test, shopping: state.shopping }} >
+                                <Button variant="contained" className="startButton" style={{ "marginLeft": "30%" }}>Weiter zu den Cocktails</Button>
+                            </Link>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     );

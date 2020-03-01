@@ -1,0 +1,25 @@
+Anforderungen:
+
+Die Website soll dem Nutzer einen oder mehrere Cocktails basierend auf seinen vorhandenen Zutaten vorschlagen bzw.
+falls der Nutzer gewollt ist einkaufen zu gehen, werden auch Cocktails vorgeschlagen, die nicht vollständig aus 
+den vorhandene Zutaten erstellt werden können. Dabei soll angezeigt werden, wieviel Prozent der Zutaten schon vorhanden sind.
+
+Es sollen folgende drei Seiten geben:
+
+Zutateneingabe
+	- Der Nutzer soll angeben können, welche Zutaten er hat
+	- Der Nutzer soll angeben können, ob er einkaufen möchte
+
+Cocktailübersicht
+	- Dem Nutzer sollen entweder mögliche Cocktails oder "fast" mögliche Cocktails angezeigt werden
+
+Rezeptanzeige
+	- Dem Nutzer sollen zum ausgewählten Cocktail alle Zubereitungsschritte (abhakbar)
+	  und benötigte Zutaten angezeigt werden
+
+Anforderungen an die Umsetzung:
+
+- Die Seiten sollen jeweils über Routen aufrufbar sein.
+- Es soll min. eine classbased und eine functional Component genutzt werden.
+- Es soll useState verwendet werden.
+- Es soll material-ui genutzt werden.

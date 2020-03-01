@@ -1,33 +1,32 @@
 import React from 'react';
-import { getAllReceipts } from '../databasehandler';
+import { getAllRecipes } from '../databasehandler';
 import { ListItem, ListItemText } from '@material-ui/core';
 import "./recipe.css"
 import Recipe from "../components/recipe"
 import { Redirect } from 'react-router-dom';
 import "./cocktailPage.css"
+import { idGenerator } from "../idGenerator"
 
 
-class Cocktail extends React.Component {
+class CocktailPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { showOneRecipe: false }
-
   }
 
-  allRecieps = []
-  allRecieps = Object.values(getAllReceipts())
+  allRecipes = []
+  allRecipes = Object.values(getAllRecipes())
   props = { location: { selected: ["Rum", "Wodka"], shopping: true } }
 
   matchRating = (selectedIngredients) => {
-    console.log("selectedIngre: ", selectedIngredients)
-    this.allRecieps.forEach(reciept => {
+    this.allRecipes.forEach(recipe => {
       let matchedIngredients = []
-      reciept.ingredients.forEach(ingredient => {
+      recipe.ingredients.forEach(ingredient => {
         if (selectedIngredients.indexOf(ingredient) >= 0) {
           matchedIngredients.push(ingredient)
         }
       })
-      reciept["matchingRate"] = matchedIngredients.length / reciept.ingredients.length
+      recipe["matchingRate"] = matchedIngredients.length / recipe.ingredients.length
     })
   }
 
@@ -35,14 +34,12 @@ class Cocktail extends React.Component {
     this.setState({ showOneRecipe: false })
   }
 
-  createContent = (recieps, shopping) => {
+  createContent = (recipes, shopping) => {
     let content = []
     if (shopping) {
-      recieps = Array.from(recieps)
-      // TODO vorher == wenns funktioniert passts
-      recieps = recieps.filter(reciept => reciept.matchingRate !== 1)
-      console.log(recieps)
-      recieps.sort(function (a, b) {
+      recipes = Array.from(recipes)
+      recipes = recipes.filter(recipe => recipe.matchingRate !== 1)
+      recipes.sort(function (a, b) {
         if (a.matchingRate > b.matchingRate) {
           return -1;
         }
@@ -52,27 +49,27 @@ class Cocktail extends React.Component {
         return 0;
       })
     } else {
-      // TODO vorher == wenns funktioniert passts
-      recieps = recieps.filter(reciep => reciep.matchingRate === 1)
+      recipes = recipes.filter(reciep => reciep.matchingRate === 1)
     }
-    console.log("TEst reciepe: ", recieps)
-    recieps.forEach(recipe => {
+    recipes.forEach(recipe => {
       content.push(
-        <ListItem onClick={() => {
-          this.setState({ selected: recipe, showOneRecipe: true })
-        }}>
-          <ListItemText>
-
+        <ListItem
+          key={idGenerator(recipe.name)}
+          onClick={() => {
+            this.setState({ selected: recipe, showOneRecipe: true })
+          }}>
+          <ListItemText
+            key={idGenerator(recipe.name + "text")}>
             {recipe.name}
           </ListItemText>
-          <ListItemText>
+          <ListItemText
+            key={idGenerator("Matchingrate")}>
             {Math.round(recipe.matchingRate * 100)}%
           </ListItemText>
         </ListItem>
       );
 
     })
-    console.log("Content: ", content)
     return content
   }
 
@@ -80,25 +77,31 @@ class Cocktail extends React.Component {
     let content
     if (this.props.location.shopping) {
       content = [
-        <>
-          Hier sind drei Vorschläge:
-          (einfach auf den Namen klicken)
-        {this.createContent(this.allRecieps, this.props.location.shopping)}
-        </>
+        <div className="Test1">
+          <p>
+            Hier sind drei Vorschläge:
+            </p>
+          <p>
+            (einfach auf den Namen klicken)
+            </p>
+          {this.createContent(this.allRecipes, true)}
+        </div>
       ]
     } else {
       content = [
-        <>
-          Hier sind alle möglichen Cocktails mit Ihren Zutaten:
-          (einfach auf den Namen klicken)
-          {this.createContent(this.allRecieps, true)}
-        </>
+        <div className="Test2">
+          <p>
+            Hier sind alle möglichen Cocktails mit Ihren Zutaten:
+  </p>
+          <p>
+            (einfach auf den Namen klicken)
+  </p>
+          {this.createContent(this.allRecipes, false)}
+        </div>
       ]
     }
     return content
   }
-
-
   render() {
     if (!this.props.location.selected) {
       return (
@@ -119,5 +122,4 @@ class Cocktail extends React.Component {
     }
   }
 }
-
-export default Cocktail
+export default CocktailPage

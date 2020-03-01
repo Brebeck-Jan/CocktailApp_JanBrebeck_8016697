@@ -6,6 +6,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
+import {idGenerator} from "../idGenerator"
 
 
 const useStyles = makeStyles(theme => ({
@@ -36,7 +38,7 @@ function IngridientComponent(props) {
         let content = []
         let selectebalItems = []
         props.allIngredients.map(element => {
-            selectebalItems.push(<MenuItem value={element}>{element}</MenuItem>)
+            selectebalItems.push(<MenuItem key={idGenerator("MenuItem")} value={element}>{element}</MenuItem>)
             return null
         }
         )
@@ -85,18 +87,21 @@ function IngridientComponent(props) {
     }
 
     return (
-        <tbody>
+        <>
             {createContent()}
-            <td>
-                <button
-                    onClick={
-                        addIngridient
-                    }>
-                    Zutat hinzufügen
-                        </button>
-            </td>
-        </tbody>
-
+            <tr key={idGenerator("Zutate hinzufügen")}>
+                <td>
+                    <Button
+                        variant="contained"
+                        className="startButton"
+                        style={{ "marginLeft": "30%" }}
+                        onClick={addIngridient}
+                    >
+                        Zutat hinzufügen
+                </Button>
+                </td>
+            </tr>
+            </>
     );
 }
 

@@ -9,15 +9,16 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
+import { idGenerator } from "../idGenerator"
 
 export default function Recipe(props) {
-    const [state, setState] = useState({}); 
+    const [state, setState] = useState({});
 
     const ingredients = () => {
         let content = []
         props.recipe.ingredients.forEach(ingredient => {
             content.push(
-                <ListItem>{ingredient}</ListItem>
+                <ListItem key={idGenerator(ingredient)}>{ingredient}</ListItem>
             )
         });
         return (content);
@@ -27,14 +28,13 @@ export default function Recipe(props) {
         let content = []
         let keys = {}
         props.recipe.stepsOfPreparation.forEach(step => {
-            console.log("step: ", step)
             if (!keys[step]) {
                 keys[step] = false
             }
             content.push(
-                <TableRow>
-                    <TableCell align="right">{step}</TableCell>
-                    <TableCell align="right">{
+                <TableRow key={idGenerator("TableRow")}>
+                    <TableCell key={idGenerator(step)} align="right">{step}</TableCell>
+                    <TableCell key={idGenerator("right cell")} align="right">{
                         <Checkbox
                             checked={state[step]}
                             onChange={() => {
@@ -43,7 +43,6 @@ export default function Recipe(props) {
                                 } else {
                                     state[step] = true
                                 }
-
                             }}
                             value="primary"
                             inputProps={{ 'aria-label': 'primary checkbox' }}
@@ -57,9 +56,6 @@ export default function Recipe(props) {
         }
         return (content);
     }
-
-    // TODO 3: Finish banner
-    // TODO 2: Button style
 
     return (
         <div className="recipe">
@@ -76,10 +72,7 @@ export default function Recipe(props) {
                     </TableBody>
                 </Table>
             </TableContainer>
-
-
             <button onClick={props.backButton}>back</button>
-
         </div >
     )
 }
