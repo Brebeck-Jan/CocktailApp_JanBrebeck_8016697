@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import "./Ingredients.css"
 import Button from '@material-ui/core/Button';
-import {idGenerator} from "../idGenerator"
+import { idGenerator } from "../idGenerator"
 
 const AntSwitch = withStyles(theme => ({
     root: {
@@ -63,7 +63,10 @@ function Ingridient() {
         <div className="ingredients">
             <table>
                 <tbody>
-                    <IngridientComponent allIngredients={allIngredients} setSelected={setSelected} />
+                    <IngridientComponent
+                        allIngredients={allIngredients}
+                        setSelected={setSelected}
+                    />
                     <tr key={idGenerator("Einkaufen?")}>
                         <td>
                             Wollen Sie einkaufen gehen?
@@ -86,8 +89,14 @@ function Ingridient() {
                     </tr>
                     <tr key={idGenerator("Weiter")}>
                         <td>
-                            <Link to={{ pathname: "/cocktail", selected: state.test, shopping: state.shopping }} >
-                                <Button variant="contained" className="startButton" style={{ "marginLeft": "30%", "width":"100%"}}>Weiter zu den Cocktails</Button>
+                            <Link
+                                to={{ pathname: "/cocktail", selected: state.test, shopping: state.shopping }} >
+                                <Button
+                                    variant="contained"
+                                    className="startButton"
+                                    style={{ "marginLeft": "30%", "width": "100%" }}>
+                                    Weiter zu den Cocktails
+                                    </Button>
                             </Link>
                         </td>
                     </tr>

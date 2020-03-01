@@ -8,12 +8,23 @@ class StartingPage extends React.Component {
     render() {
         return (
             <div className="Startcontent">
-                <p className="welcome">
-                    Welcome to your Cocktailapp!
-                </p>
-                <img alt="Backgroundimage" className="background" src={Background} />
-                <Link to={"/ingredients"}>
-                    <Button variant="contained" className="startButton" style={{"marginLeft":"30%"}}>Start</Button>
+                <p className="welcome">Welcome to your Cocktailapp!</p>
+                <img
+                    alt="Backgroundimage"
+                    className="background"
+                    src={Background}
+                />
+                <Link
+                    to={"/ingredients"}
+                >
+                    <Button
+                        variant="contained"
+                        className="startButton"
+                        style={{
+                            "marginLeft": "30%"
+                        }}>
+                        Start
+                        </Button>
                 </Link>
             </div>
         )

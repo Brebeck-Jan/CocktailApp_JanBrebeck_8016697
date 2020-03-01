@@ -18,7 +18,11 @@ export default function Recipe(props) {
         let content = []
         props.recipe.ingredients.forEach(ingredient => {
             content.push(
-                <ListItem key={idGenerator(ingredient)}>{ingredient}</ListItem>
+                <ListItem
+                    key={idGenerator(ingredient)
+                    }>
+                    {ingredient}
+                </ListItem>
             )
         });
         return (content);
@@ -33,21 +37,28 @@ export default function Recipe(props) {
             }
             content.push(
                 <TableRow key={idGenerator("TableRow")}>
-                    <TableCell key={idGenerator(step)} align="right">{step}</TableCell>
-                    <TableCell key={idGenerator("right cell")} align="right">{
-                        <Checkbox
-                            checked={state[step]}
-                            onChange={() => {
-                                if (state[step]) {
-                                    state[step] = true
-                                } else {
-                                    state[step] = true
-                                }
-                            }}
-                            value="primary"
-                            inputProps={{ 'aria-label': 'primary checkbox' }}
-                        />
-                    }</TableCell>
+                    <TableCell
+                        key={idGenerator(step)}
+                        align="right">
+                        {step}
+                    </TableCell>
+                    <TableCell
+                        key={idGenerator("right cell")}
+                        align="right"
+                    >{
+                            <Checkbox
+                                checked={state[step]}
+                                onChange={() => {
+                                    if (state[step]) {
+                                        state[step] = true
+                                    } else {
+                                        state[step] = true
+                                    }
+                                }}
+                                value="primary"
+                                inputProps={{ 'aria-label': 'primary checkbox' }}
+                            />
+                        }</TableCell>
                 </TableRow>
             )
         });

@@ -3,9 +3,9 @@ import "./recipes.css";
 import List from "@material-ui/core/List"
 import { ListItem } from '@material-ui/core';
 import Recipe from "../components/recipe"
-import {idGenerator} from "../idGenerator"
+import { idGenerator } from "../idGenerator"
 
-class Receipts extends React.Component {
+class Recipes extends React.Component {
     constructor(props) {
         super(props)
         this.state = { allRecipes: Object.values(this.props.data), showOneRecipe: false }
@@ -14,13 +14,12 @@ class Receipts extends React.Component {
     renderItems(allReceipts) {
         let content = []
         allReceipts.forEach(recipe => {
-            console.log("recipe: ", recipe)
             content.push(
-                <ListItem 
-                key={idGenerator(recipe.name)}
-                onClick={() => {
-                    this.setState({ selected: recipe, showOneRecipe: true })
-                }}>
+                <ListItem
+                    key={idGenerator(recipe.name)}
+                    onClick={() => {
+                        this.setState({ selected: recipe, showOneRecipe: true })
+                    }}>
                     {recipe.name}
                 </ListItem>
             )
@@ -28,20 +27,26 @@ class Receipts extends React.Component {
         return content
     }
 
-    backButton(){
-        this.setState({showOneRecipe: false})
+    backButton() {
+        this.setState({ showOneRecipe: false })
     }
 
     render() {
         return (
-            <div className="recipes">
+            <div
+                className="recipes">
                 {
-                this.state.showOneRecipe ?
-                        <Recipe recipe={this.state.selected} backButton={this.backButton.bind(this)}/>
+                    this.state.showOneRecipe ?
+                        <Recipe
+                            recipe={this.state.selected}
+                            backButton={this.backButton.bind(this)}
+                        />
                         :
                         <>
                             <h1>Alle Cocktailrezepte</h1>
-                            <List key={idGenerator("Alle")}>
+                            <List
+                                key={idGenerator("Alle")}
+                            >
                                 {this.renderItems(this.state.allRecipes)}
                             </List>
                         </>
@@ -51,4 +56,4 @@ class Receipts extends React.Component {
     }
 }
 
-export default Receipts;
+export default Recipes;

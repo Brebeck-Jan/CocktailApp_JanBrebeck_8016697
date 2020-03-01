@@ -7,7 +7,7 @@ import Select from '@material-ui/core/Select';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
-import {idGenerator} from "../idGenerator"
+import { idGenerator } from "../idGenerator"
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 
 
 function IngridientComponent(props) {
-    console.log("IngridientsComponent props: ", props)
     const [state, setState] = useState({ selected: ["Bitte Auswählen"] });
     const classes = useStyles();
 
@@ -34,7 +33,6 @@ function IngridientComponent(props) {
     }
 
     let createContent = () => {
-        console.log("CreateContent state: ", state)
         let content = []
         let selectebalItems = []
         props.allIngredients.map(element => {
@@ -57,7 +55,10 @@ function IngridientComponent(props) {
                                     item = e.target.value
                                 }
                                 }>
-                                <MenuItem value="Bitte Auswählen">Bitte Auswählen</MenuItem>
+                                <MenuItem
+                                    value="Bitte Auswählen">
+                                    Bitte Auswählen
+                                    </MenuItem>
                                 {
                                     selectebalItems
                                 }
@@ -92,17 +93,16 @@ function IngridientComponent(props) {
             <tr key={idGenerator("Zutate hinzufügen")}>
                 <td>
                     <Button
-                    
                         variant="contained"
                         className="startButton"
-                        style={{ "marginLeft": "30%", "width":"100%"}}
+                        style={{ "marginLeft": "30%", "width": "100%" }}
                         onClick={addIngridient}
                     >
                         Zutat hinzufügen
                 </Button>
                 </td>
             </tr>
-            </>
+        </>
     );
 }
 
