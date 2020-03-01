@@ -1,10 +1,13 @@
 .Startcontent{
     margin: auto;
     width: 100%;
+    align-items:center;
 }
 
 .welcome{
     text-align: center;
+    width: 50%;
+    margin-left:25%
 }
 
 .background{

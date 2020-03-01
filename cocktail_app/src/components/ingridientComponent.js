@@ -92,9 +92,10 @@ function IngridientComponent(props) {
             <tr key={idGenerator("Zutate hinzufügen")}>
                 <td>
                     <Button
+                    
                         variant="contained"
                         className="startButton"
-                        style={{ "marginLeft": "30%" }}
+                        style={{ "marginLeft": "30%", "width":"100%"}}
                         onClick={addIngridient}
                     >
                         Zutat hinzufügen

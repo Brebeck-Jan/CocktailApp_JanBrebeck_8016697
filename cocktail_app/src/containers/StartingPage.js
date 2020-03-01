@@ -8,7 +8,7 @@ class StartingPage extends React.Component {
     render() {
         return (
             <div className="Startcontent">
-                <p className="Welcome">
+                <p className="welcome">
                     Welcome to your Cocktailapp!
                 </p>
                 <img alt="Backgroundimage" className="background" src={Background} />

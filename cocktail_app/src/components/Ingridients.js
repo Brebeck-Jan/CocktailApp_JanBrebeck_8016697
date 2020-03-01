@@ -87,7 +87,7 @@ function Ingridient() {
                     <tr key={idGenerator("Weiter")}>
                         <td>
                             <Link to={{ pathname: "/cocktail", selected: state.test, shopping: state.shopping }} >
-                                <Button variant="contained" className="startButton" style={{ "marginLeft": "30%" }}>Weiter zu den Cocktails</Button>
+                                <Button variant="contained" className="startButton" style={{ "marginLeft": "30%", "width":"100%"}}>Weiter zu den Cocktails</Button>
                             </Link>
                         </td>
                     </tr>
