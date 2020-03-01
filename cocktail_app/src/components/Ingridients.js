@@ -3,15 +3,10 @@ import IngridientComponent from "./ingridientComponent"
 import { getAllIngridients } from "../databasehandler"
 import { Link } from "react-router-dom"
 import { withStyles } from '@material-ui/core/styles';
-import { purple } from '@material-ui/core/colors';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import "./Ingredients.css"
-
-//TODO min margin left
 
 const AntSwitch = withStyles(theme => ({
     root: {
@@ -48,32 +43,21 @@ const AntSwitch = withStyles(theme => ({
 }))(Switch);
 
 
-function Ingridient(probs) {
+function Ingridient() {
     const [state, setState] = React.useState({
         shopping: false,
-
     });
 
     const handleChange = name => event => {
         setState({ ...state, [name]: event.target.checked });
-        console.log("Event: ", event.target.checked)
-        console.log("HandleChange State: ", state)
     };
 
-    let allIngredients = ["Rum"]
-    allIngredients = getAllIngridients()
+    let allIngredients = getAllIngridients()
 
-    let selectItems = (items) => {
-        setState({
-            selectedItems: items
-        })
-
-    }
     let setSelected = (selectedItems) => {
         setState({ test: selectedItems })
     }
 
-    console.log("All: ", allIngredients)
     return (
         <div className="ingredients">
             <table>
@@ -103,7 +87,7 @@ function Ingridient(probs) {
                         <Link to={{ pathname: "/cocktail", selected: state.test, shopping: state.shopping }} >
                             <button type="button"
                                 onClick={() => {
-                                    console.log("Test; ", state.test)
+                                    console.log("Test; ", state)
                                 }}
                                 className="startButton"
                             >

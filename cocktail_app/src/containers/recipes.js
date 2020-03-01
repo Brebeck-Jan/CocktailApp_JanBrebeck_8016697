@@ -1,8 +1,6 @@
 import React from 'react';
 import "./recipes.css";
-import ShowReceipts from "../components/showReceipts"
 import List from "@material-ui/core/List"
-import { getAllReceipts } from '../databasehandler';
 import { ListItem } from '@material-ui/core';
 import Recipe from "../components/recipe"
 
@@ -12,8 +10,6 @@ class Receipts extends React.Component {
         this.state = { allReceipts: Object.values(this.props.data), showOneRecipe: false }
         console.log("Receipts this.state.allReceipts:", this.state.allReceipts)
     }
-
-    // TODO: redirect, if no ingredients are given
 
     renderItems(allReceipts) {
         let content = []

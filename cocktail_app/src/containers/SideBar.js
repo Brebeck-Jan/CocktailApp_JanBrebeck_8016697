@@ -1,7 +1,5 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
-import { Link } from 'react-router-dom'
-import { getAllReceipts } from "../databasehandler"
 import "./Sidebar.css"
 
 class Sidebar extends React.Component {

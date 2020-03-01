@@ -2,9 +2,10 @@ import React, { useState } from "react"
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 const useStyles = makeStyles(theme => ({
@@ -18,50 +19,61 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-function IngridientComponent(probs) {
-    console.log("IngridientsComponent probs: ", probs)
-    const [state, setState] = useState({ selected: ["Bitte Auswählen", "Bitte Auswählen"] });
+function IngridientComponent(props) {
+    console.log("IngridientsComponent props: ", props)
+    const [state, setState] = useState({ selected: ["Bitte Auswählen"] });
     const classes = useStyles();
 
     let handleChange = (item, e) => {
         let index = state.selected.indexOf(item)
         state.selected[index] = e
         setState({ selected: state.selected })
-        probs.setSelected(state.selected)
+        props.setSelected(state.selected)
     }
 
     let createContent = () => {
         console.log("CreateContent state: ", state)
         let content = []
         let selectebalItems = []
-        probs.allIngredients.map(element => {
+        props.allIngredients.map(element => {
             selectebalItems.push(<MenuItem value={element}>{element}</MenuItem>)
-        })
+            return null
+        }
+        )
         state.selected.forEach(item => {
             content.push(
-                <>
-                    <tr>
-                        <td>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel id="demo-simple-select-label"></InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    value={item}
-                                    onChange={(e) => {
-                                        handleChange(item, e.target.value)
-                                        item = e.target.value
-                                    }
-                                    }>
-                                    <MenuItem value="Bitte Auswählen">Bitte Auswählen</MenuItem>
-                                    {
-                                        selectebalItems
-                                    }
-                                </Select>
-                            </FormControl>
-                        </td>
-                    </tr>
-                </>
+                <tr key={item}>
+                    <td>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel id="demo-simple-select-label"></InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={item}
+                                onChange={(e) => {
+                                    handleChange(item, e.target.value)
+                                    item = e.target.value
+                                }
+                                }>
+                                <MenuItem value="Bitte Auswählen">Bitte Auswählen</MenuItem>
+                                {
+                                    selectebalItems
+                                }
+                            </Select>
+                        </FormControl>
+                    </td>
+                    <td>
+                        <IconButton
+                            aria-label="delete"
+                            onClick={() => {
+                                state.selected = state.selected.filter(element => element !== item)
+                                setState({ selected: state.selected });
+                            }
+                            }>
+                            <DeleteIcon />
+                        </IconButton>
+                    </td>
+                </tr >
             )
         });
         return content

@@ -2,22 +2,16 @@ import React, { useState } from 'react';
 import List from "@material-ui/core/List";
 import { ListItem } from '@material-ui/core';
 import "./recipe.css"
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 
 export default function Recipe(props) {
-    const [value, setValue] = useState(0); // integer state
-    const update = () => {
-        console.log("UPDATE")
-        setValue(value => ++value); // update the state to force render
-    }
+    const [state, setState] = useState({}); 
 
     const ingredients = () => {
         let content = []
@@ -31,17 +25,25 @@ export default function Recipe(props) {
 
     const stepsOfPreparation = () => {
         let content = []
-        let checked = false;
+        let keys = {}
         props.recipe.stepsOfPreparation.forEach(step => {
+            console.log("step: ", step)
+            if (!keys[step]) {
+                keys[step] = false
+            }
             content.push(
                 <TableRow>
                     <TableCell align="right">{step}</TableCell>
                     <TableCell align="right">{
                         <Checkbox
-                            checked={checked}
+                            checked={state[step]}
                             onChange={() => {
-                                checked = true
-                                update()
+                                if (state[step]) {
+                                    state[step] = true
+                                } else {
+                                    state[step] = true
+                                }
+
                             }}
                             value="primary"
                             inputProps={{ 'aria-label': 'primary checkbox' }}
@@ -50,10 +52,15 @@ export default function Recipe(props) {
                 </TableRow>
             )
         });
+        if (state.length !== keys.length) {
+            setState(keys)
+        }
         return (content);
     }
 
-    console.log("recipe.props", props)
+    // TODO 3: Finish banner
+    // TODO 2: Button style
+
     return (
         <div className="recipe">
             <h1>{props.recipe.name}</h1>
@@ -72,6 +79,7 @@ export default function Recipe(props) {
 
 
             <button onClick={props.backButton}>back</button>
+
         </div >
     )
 }
