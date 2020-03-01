@@ -1,0 +1,21 @@
+Das Konzept zur Cocktail-App:
+
+Daten:
+
+Ein Objekt zu einem Cocktailrezept besteht aus dem Namen, einer Liste an Zutaten und einer Liste an Zubereitungsschritten. Dabei werden die Cocktailrezepte in einer Firebase-Datenbank gespeichert und mittels Jquery-Abfragen abgerufen.
+
+Zusätzlich zu den Cocktailrezepten wird eine Liste an möglichen Zutaten in der Datenbank gepflegt.
+
+Seitenaufbau:
+Die Cocktail-App ist in 4 Seiten aufgebaut.
+Startseite:
+Als erstes die Startseite, die keine weiteren Funktionen bietet außer die Weiterleitung auf die Zutatenseite über den "Start"-Button. Desweiteren sieht man schon das "Burger-Menu" worüber zwischen den Seiten der App navigieren kann.
+
+Zutatenseite:
+Auf der Zutatenseite kann man angeben, welche Zutaten man Zuhause hat und ob man gewillt ist einkaufen zugehen. Über einen Button gelangt man anschließen zur Auswahl der Cocktails.
+
+Cocktailseite:
+Die Auswahl der Cocktails wird auf der Cocktailseite vorgenommen, hier werden nur die Cocktails angezeigt, die mit den angegeben Zutaten möglich sind herzustellen oder mit einer Matchingrate falls der Nutzer einkaufen möchte.
+
+Rezeptseite:
+Wenn man sich für einen Cocktail entschieden hat kann man über klicken auf ein Cocktail zur Rezeptseite gelangen. Hier werden dann die Zubereitungsschritte für den entsprechenden Cocktail angezeigt.
