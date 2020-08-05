@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/CocktailApp_JanBrebeck_8016697/precache-manifest.ec59b20e17bc59a12c19f45528987f71.js"
+  "/CocktailApp_JanBrebeck_8016697/precache-manifest.69a0b70efd75e6f9650dbf169298af2b.js"
 );
 
 self.addEventListener('message', (event) => {
