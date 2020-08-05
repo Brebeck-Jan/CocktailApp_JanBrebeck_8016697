@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/CocktailApp_JanBrebeck_8016697/static/css/main.3a8943b6.chunk.css",
+    "main.js": "/CocktailApp_JanBrebeck_8016697/static/js/main.241a3e25.chunk.js",
+    "main.js.map": "/CocktailApp_JanBrebeck_8016697/static/js/main.241a3e25.chunk.js.map",
+    "runtime-main.js": "/CocktailApp_JanBrebeck_8016697/static/js/runtime-main.c0aaea89.js",
+    "runtime-main.js.map": "/CocktailApp_JanBrebeck_8016697/static/js/runtime-main.c0aaea89.js.map",
+    "static/js/2.221a095c.chunk.js": "/CocktailApp_JanBrebeck_8016697/static/js/2.221a095c.chunk.js",
+    "static/js/2.221a095c.chunk.js.map": "/CocktailApp_JanBrebeck_8016697/static/js/2.221a095c.chunk.js.map",
+    "index.html": "/CocktailApp_JanBrebeck_8016697/index.html",
+    "precache-manifest.ec59b20e17bc59a12c19f45528987f71.js": "/CocktailApp_JanBrebeck_8016697/precache-manifest.ec59b20e17bc59a12c19f45528987f71.js",
+    "service-worker.js": "/CocktailApp_JanBrebeck_8016697/service-worker.js",
+    "static/css/main.3a8943b6.chunk.css.map": "/CocktailApp_JanBrebeck_8016697/static/css/main.3a8943b6.chunk.css.map",
+    "static/js/2.221a095c.chunk.js.LICENSE": "/CocktailApp_JanBrebeck_8016697/static/js/2.221a095c.chunk.js.LICENSE",
+    "static/media/Background.jpg": "/CocktailApp_JanBrebeck_8016697/static/media/Background.a73750b0.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c0aaea89.js",
+    "static/js/2.221a095c.chunk.js",
+    "static/css/main.3a8943b6.chunk.css",
+    "static/js/main.241a3e25.chunk.js"
+  ]
+}
